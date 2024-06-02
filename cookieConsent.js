@@ -1,14 +1,18 @@
 'use strict';
 
-// import your scripts
+// import (ES6) your scripts
 
-function cookiesConsent({backgroundColor, height, text, textColor, link, linkColor, btnBorder, btnTextColor, nameConsent, cancel, confirm}) {
+function cookiesConsent({backgroundColor, height, text, textColor, link, linkColor, btnBorder, btnTextColor, cancel, confirm}, {nameConsent, value, expires}) {
 	class CookieConsent {
-		constructor({consentPropertyType, linkConsentCookies, linkColor, textConsent, textConsentColor, heightblock, background, borderBtnColor, btnTextColor, btnConfirmText, btnCancelText}) {
+		constructor(
+			{heightblock, background, linkConsentCookies, linkColor, textConsent, textConsentColor, borderBtnColor, 
+				btnTextColor, btnConfirmText, btnCancelText, consentPropertyType, valueCookies, expiresCookies}) {
 			this.popup = 'popup';
 			this.btnConfirm = 'data-confirm';
 			this.btnCancel = 'data-cancel';
 			this.consentPropertyType = consentPropertyType === '' ? 'site_consent' : consentPropertyType;
+			this.valueCookies = valueCookies === '' ? 'true' : valueCookies;
+			this.expiresCookies = expiresCookies;
 			this.linkConsentCookies = linkConsentCookies === '' ? 'https://2gdpr.com/cookies' : linkConsentCookies;
 			this.textConsent = textConsent === '' ? 'Я даю согласие на использование cookies' : textConsent;
 			this.linkColor = linkColor === '' ? '#fff' : linkColor;
@@ -21,6 +25,7 @@ function cookiesConsent({backgroundColor, height, text, textColor, link, linkCol
 			this.btnCancelText = btnCancelText === '' ? 'Cancel' : btnCancelText;
 		}
 
+		// создание блока Cookies
 		create = () => {
 			const windowCookies = document.createElement('div');
 			windowCookies.classList.add(this.popup);
@@ -59,11 +64,11 @@ function cookiesConsent({backgroundColor, height, text, textColor, link, linkCol
 
 		// запись ключа и значения в Cookies
 		setItem = (key, value) => {
-			document.cookie = `${key}=${value}; expires = Sun, 16 Jul 3567 06:23:41 GMT`;
+			document.cookie = `${key}=${value}; expires = ${this.expiresCookies}`;
 		};
 
 		// проверка наличия записи ключа в Cookies
-		hasConsented = () => this.getItem(this.consentPropertyType) === 'true' ? true : false;
+		hasConsented = () => this.getItem(this.consentPropertyType) === `${this.valueCookies}` ? true : false;
 
 		// метод для смены статуса согласия пользователя и загрузки метрик
 		changeStatus = (prop) => {
@@ -79,7 +84,7 @@ function cookiesConsent({backgroundColor, height, text, textColor, link, linkCol
 			btn.forEach(el => {
 				el.addEventListener('click', () => {
 					if (el.getAttribute(this.btnConfirm) == '') {
-						this.changeStatus(true);
+						this.changeStatus(this.valueCookies);
 						popup.style.bottom = '-100%';
 					}
 					if (el.getAttribute(this.btnCancel) == '') {
@@ -135,6 +140,8 @@ function cookiesConsent({backgroundColor, height, text, textColor, link, linkCol
 
 	new CookieConsent({
 		consentPropertyType: nameConsent,
+		valueCookies: value,
+		expiresCookies: expires,
 		linkConsentCookies: link,
 		textConsent: text,
 		linkColor: linkColor,
@@ -149,7 +156,6 @@ function cookiesConsent({backgroundColor, height, text, textColor, link, linkCol
 
 	function myScripts() {
 		//your scripts
-		console.log('done');
 	}
 }
 
