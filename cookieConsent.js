@@ -1,6 +1,6 @@
 'use strict';
 
-// import (ES6) your scripts
+// import your scripts
 
 function cookiesConsent({backgroundColor, height, text, textColor, link, linkColor, btnBorder, btnTextColor, cancel, confirm}, {nameConsent, value, expires}) {
 	class CookieConsent {
@@ -18,7 +18,7 @@ function cookiesConsent({backgroundColor, height, text, textColor, link, linkCol
 			this.linkColor = linkColor === '' ? '#fff' : linkColor;
 			this.textConsentColor = textConsentColor === '' ? 'black' : textConsentColor;
 			this.heightblock = heightblock === '' ? '80px' : heightblock;
-			this.background = background === '' ? 'rgb(255, 183, 0);' : background;
+			this.background = background === '' ? 'rgb(255, 183, 0)' : background;
 			this.borderBtnColor = borderBtnColor === '' ? 'black' : borderBtnColor;
 			this.btnTextColor = btnTextColor === '' ? '#fff' : btnTextColor;
 			this.btnConfirmText = btnConfirmText === '' ? 'Accept' : btnConfirmText;

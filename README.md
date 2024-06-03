@@ -10,33 +10,33 @@ USAGE:
 
 2.  Import using command 'import cookieConsent from ...' in your main file 'main.js'.
 
-3.  In the main file call the function cookieConsent({}) inside which, as a parameter, pass an objects with the following properties or an empty string as the default parameter:
+3.  In the main file call the function cookieConsent({}) inside which, as a parameter, pass an objects with the following properties or an empty string as the default parameter('') :
 
 ```
 cookiesConsent(
   { // cookies window options
-    backgroundColor: 'your background color', // (default: 'rgb(255, 183, 0);')
-    height: 'your height', // (default: 80px)
-    text: 'your text', // (default: 'Я даю согласие на использование cookies')
-    textColor: 'your text color', // (default: 'black')
-    link: 'your link cookie policy', // (default: 'https://2gdpr.com/cookies')
-    linkColor: 'your text link color', // (default: '#fff')
-    btnBorder: 'your button border color', // (default: 'black')
-    btnTextColor: 'your button text color', // (default: '#fff')
-    cancel: 'your text cancel', // (default: 'Accept')
-    confirm: 'your text confirm' // (default: 'Cancel')
+    backgroundColor: 'your background color', // ('' == 'rgb(255, 183, 0);')
+    height: 'your height', // ('' == 80px)
+    text: 'your text', // ('' == 'Я даю согласие на использование cookies')
+    textColor: 'your text color', // ('' == 'black')
+    link: 'your link cookie policy', // ('' == 'https://2gdpr.com/cookies')
+    linkColor: 'your text link color', // ('' == '#fff')
+    btnBorder: 'your button border color', // ('' == 'black')
+    btnTextColor: 'your button text color', // ('' == '#fff')
+    cancel: 'your text cancel', // ('' == 'Accept')
+    confirm: 'your text confirm' // ('' == 'Cancel')
   },
   { // technical specifications cookies
-    nameConsent: 'your name consent cookies', // (default: 'site_consent')
-    value: 'your value', // (default: 'true')
-    expires: 'your expires date' // (default: 'Session')
+    nameConsent: 'your name consent cookies', // ('' == 'site_consent')
+    value: 'your value', // ('' == 'true')
+    expires: 'your expires date' // ('' == 'Session')
   }
 );
 ```
 
-4. Import your script into the file "cookieConsent.js" and write the call to the function myScripts():
+4. Import your scripts into the “cookieConsent.js” file and write their calls to the myScripts() function:
 ```
 function myScripts() {
-  //your scripts
+  //your scripts();
 }
 ```
